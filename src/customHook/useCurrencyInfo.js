@@ -2,10 +2,13 @@ import { useState, useEffect } from "react";
 
 function useCurrencyInfo(currency) {
 
+    const apiKey = process.env.REACT_APP_API_KEY;
+        
     const [data, setData] = useState({});
 
     useEffect(() => {
-        fetch(`https://v6.exchangerate-api.com/v6/32b756f57b06a8eb86b301f7/latest/${currency}`)
+        
+        fetch(`https://v6.exchangerate-api.com/v6/${apiKey}/latest/${currency}`);
           .then((res) => res.json())
           .then((res) => {
             if (res && res.conversion_rates) {
